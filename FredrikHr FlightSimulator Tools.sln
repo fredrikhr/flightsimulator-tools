@@ -14,10 +14,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		nuget.config = nuget.config
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BD8CC494-E860-4A92-84D9-F735618A43DF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FredrikHr.MsFlightSimulatorTools.SimConnect.Extensions", "src\FredrikHr.MsFlightSimulatorTools.SimConnect.Extensions\FredrikHr.MsFlightSimulatorTools.SimConnect.Extensions.csproj", "{22EFE844-A60E-4FEF-8143-93106654FD79}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,20 +30,5 @@ Global
 		SolutionGuid = {E4B6507C-0B39-4CC9-8182-744041BE990E}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{22EFE844-A60E-4FEF-8143-93106654FD79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{22EFE844-A60E-4FEF-8143-93106654FD79}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{22EFE844-A60E-4FEF-8143-93106654FD79}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{22EFE844-A60E-4FEF-8143-93106654FD79}.Debug|x64.Build.0 = Debug|Any CPU
-		{22EFE844-A60E-4FEF-8143-93106654FD79}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{22EFE844-A60E-4FEF-8143-93106654FD79}.Debug|x86.Build.0 = Debug|Any CPU
-		{22EFE844-A60E-4FEF-8143-93106654FD79}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{22EFE844-A60E-4FEF-8143-93106654FD79}.Release|Any CPU.Build.0 = Release|Any CPU
-		{22EFE844-A60E-4FEF-8143-93106654FD79}.Release|x64.ActiveCfg = Release|Any CPU
-		{22EFE844-A60E-4FEF-8143-93106654FD79}.Release|x64.Build.0 = Release|Any CPU
-		{22EFE844-A60E-4FEF-8143-93106654FD79}.Release|x86.ActiveCfg = Release|Any CPU
-		{22EFE844-A60E-4FEF-8143-93106654FD79}.Release|x86.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{22EFE844-A60E-4FEF-8143-93106654FD79} = {BD8CC494-E860-4A92-84D9-F735618A43DF}
 	EndGlobalSection
 EndGlobal

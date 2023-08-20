@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <LangVersion>10</LangVersion>
+    <TargetFrameworks>net48;net7.0-windows</TargetFrameworks>
+    <PlatformTarget>x64</PlatformTarget>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Using Remove="System.Net.Http" />
+  </ItemGroup>
+
+</Project>

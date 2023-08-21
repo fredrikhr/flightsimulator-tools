@@ -4,19 +4,20 @@
     <Platforms>x64</Platforms>
     <DefaultProjectPlatform>x64</DefaultProjectPlatform>
   </PropertyGroup>
-  
+
   <Import Sdk="Microsoft.NET.Sdk" Project="Sdk.props" />
 
   <PropertyGroup>
-    <LangVersion>10</LangVersion>
-    <TargetFrameworks>net48;net7.0-windows</TargetFrameworks>
+    <OutputType>Exe</OutputType>
+    <LangVersion>11</LangVersion>
+    <TargetFrameworks>net7.0-windows8</TargetFrameworks>
     <PlatformTarget>x64</PlatformTarget>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <Using Remove="System.Net.Http" />
+    <ProjectReference Include="..\..\src\FredrikHr.MsFlightSimulatorTools.SimConnectLoader\FredrikHr.MsFlightSimulatorTools.SimConnectLoader.csproj" />
   </ItemGroup>
 
   <ItemGroup>

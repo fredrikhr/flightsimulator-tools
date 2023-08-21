@@ -14,13 +14,6 @@ public class SimConnectAssemblyPath
     public string UnmanagedLibraryName { get; }
     public AssemblyName ManagedAssemblyName { get; }
 
-    public SimConnectAssemblyPath(string msfsSdkPath)
-        : this(
-            Path.Combine(msfsSdkPath, "SimConnect SDK", "lib"),
-            Path.Combine(msfsSdkPath, "SimConnect SDK", "lib", "managed")
-        )
-    {}
-
     public SimConnectAssemblyPath(string unmanagedLibDirPath, string managedLibDirPath) : base()
     {
 #if NET6_0_OR_GREATER
@@ -58,6 +51,32 @@ public class SimConnectAssemblyPath
             throw new DirectoryNotFoundException(
                 "The MSFS_SDK environment variable is not set"
                 );
-        return new(msfsSdk);
+        return FromMsFsSdkPath(msfsSdk);
+    }
+
+    public static SimConnectAssemblyPath FromMsFsSdkPath(string msfsSdk)
+    {
+#if NETCOREAPP
+        ArgumentException.ThrowIfNullOrEmpty(msfsSdk);
+#else
+        if (string.IsNullOrEmpty(msfsSdk))
+        {
+            throw msfsSdk is null
+                ? throw new ArgumentNullException(nameof(msfsSdk))
+                : throw new ArgumentException(
+                    paramName: nameof(msfsSdk),
+                    message: "The specified path for the MSFS SDK must not be an empty string."
+                    );
+        }
+#endif
+        if (!Directory.Exists(msfsSdk))
+        {
+            throw new DirectoryNotFoundException(
+                $"The specified path '{msfsSdk}' does not exist or does not point to a valid directory."
+                );
+        }
+        var nativeLibDirPath = Path.Combine(msfsSdk, "SimConnect SDK", "lib");
+        var managedLibDirPath = Path.Combine(nativeLibDirPath, "managed");
+        return new(nativeLibDirPath, managedLibDirPath);
     }
 }

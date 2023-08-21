@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{66A06538-5B66-4139-A11E-6F5256B03A60}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "..root", "..root", "{66A06538-5B66-4139-A11E-6F5256B03A60}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		.gitattributes = .gitattributes
@@ -22,6 +22,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{E4B8F39F-6
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FredrikHr.MsFlightSimulatorTools.Test", "test\FredrikHr.MsFlightSimulatorTools.Test\FredrikHr.MsFlightSimulatorTools.Test.csproj", "{B741059E-78C2-4C03-A778-A4585C495A97}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{5CA46A3C-3F5B-4A67-BFA2-469EDB6C7A06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FredrikHr.MsFlightSimulatorTools.SimConnectLoader.Console", "sample\FredrikHr.MsFlightSimulatorTools.SimConnectLoader.Console\FredrikHr.MsFlightSimulatorTools.SimConnectLoader.Console.csproj", "{442DAF41-E10E-4B68-9A1A-6197A1CCE779}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -36,6 +40,10 @@ Global
 		{B741059E-78C2-4C03-A778-A4585C495A97}.Debug|x64.Build.0 = Debug|x64
 		{B741059E-78C2-4C03-A778-A4585C495A97}.Release|x64.ActiveCfg = Release|x64
 		{B741059E-78C2-4C03-A778-A4585C495A97}.Release|x64.Build.0 = Release|x64
+		{442DAF41-E10E-4B68-9A1A-6197A1CCE779}.Debug|x64.ActiveCfg = Debug|x64
+		{442DAF41-E10E-4B68-9A1A-6197A1CCE779}.Debug|x64.Build.0 = Debug|x64
+		{442DAF41-E10E-4B68-9A1A-6197A1CCE779}.Release|x64.ActiveCfg = Release|x64
+		{442DAF41-E10E-4B68-9A1A-6197A1CCE779}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -43,6 +51,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{AE01A9C3-F816-43B2-81CF-313CA3359306} = {13F61C4C-0BD1-4BB7-BD61-D40A48BCC138}
 		{B741059E-78C2-4C03-A778-A4585C495A97} = {E4B8F39F-65CE-4438-8B03-1F7834FBE136}
+		{442DAF41-E10E-4B68-9A1A-6197A1CCE779} = {5CA46A3C-3F5B-4A67-BFA2-469EDB6C7A06}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E4B6507C-0B39-4CC9-8182-744041BE990E}

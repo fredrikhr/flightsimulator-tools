@@ -10,7 +10,7 @@ public static class SimConnectAssemblyPathTest
     public static void New_without_directory_path_throws_Argument()
     {
         Assert.Throws<ArgumentNullException>(
-            () => new SimConnectAssemblyPath(null!)
+            () => new SimConnectAssemblyPath(null!, null!)
             );
     }
 
@@ -18,7 +18,7 @@ public static class SimConnectAssemblyPathTest
     public static void New_with_empty_directory_path_throws_DirectoryNotFound()
     {
         Assert.Throws<DirectoryNotFoundException>(
-            () => new SimConnectAssemblyPath(string.Empty)
+            () => new SimConnectAssemblyPath(string.Empty, string.Empty)
             );
     }
 
@@ -27,7 +27,7 @@ public static class SimConnectAssemblyPathTest
     {
         string msfsSdkPath = Path.Combine("Path", "to", "directory", "that does not exist");
         Assert.Throws<DirectoryNotFoundException>(
-            () => new SimConnectAssemblyPath(msfsSdkPath)
+            () => SimConnectAssemblyPath.FromMsFsSdkPath(msfsSdkPath)
             );
     }
 

@@ -1,0 +1,26 @@
+<Project>
+
+  <PropertyGroup>
+    <Platforms>x64</Platforms>
+    <DefaultProjectPlatform>x64</DefaultProjectPlatform>
+  </PropertyGroup>
+  
+  <Import Sdk="Microsoft.NET.Sdk" Project="Sdk.props" />
+
+  <PropertyGroup>
+    <LangVersion>10</LangVersion>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FredrikHr.MsFlightSimulatorTools.SimConnectLoader\FredrikHr.MsFlightSimulatorTools.SimConnectLoader.csproj" />
+  </ItemGroup>
+
+  <Import Sdk="Microsoft.NET.Sdk" Project="Sdk.targets" />
+
+</Project>

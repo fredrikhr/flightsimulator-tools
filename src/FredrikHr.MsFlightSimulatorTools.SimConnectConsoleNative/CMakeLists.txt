@@ -7,5 +7,9 @@ project(
   LANGUAGES C
 )
 string(REGEX MATCH "[^\.]+$" PROJECT_NAME_SUFFIX ${PROJECT_NAME})
+
+find_package(SimConnect)
+
+
 file(GLOB PROJECT_C_FILES *.c LIST_DIRECTORIES false)
 add_executable(${PROJECT_NAME_SUFFIX} ${PROJECT_C_FILES})

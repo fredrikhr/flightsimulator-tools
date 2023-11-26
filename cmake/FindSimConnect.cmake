@@ -17,8 +17,8 @@ if(MSFS_SDK_FOUND)
       PATHS ${SimConnect_ROOT_DIR}
       PATH_SUFFIXES include
     )
-    find_library(SimConnect_LIBRARY
-      NAMES SimConnect
+    find_path(SimConnect_LIBRARY_DIR
+      NAMES SimConnect.dll
       PATHS ${SimConnect_ROOT_DIR}
       PATH_SUFFIXES lib
     )
@@ -31,7 +31,7 @@ find_package_handle_standard_args(SimConnect
   REQUIRED_VARS
     SimConnect_ROOT_DIR
     SimConnect_INCLUDE_DIR
-    SimConnect_LIBRARY
+    SimConnect_LIBRARY_DIR
   VERSION_VAR SimConnect_VERSION
   HANDLE_VERSION_RANGE
 )

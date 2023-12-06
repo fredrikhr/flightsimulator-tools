@@ -36,6 +36,7 @@ public static class SimConnectLibrary
         string name,
         WaitHandle eventHandle,
         int configIndex = default,
+        TimeSpan retryDelay = default,
         CancellationToken cancelToken = default
         )
     {
@@ -52,6 +53,7 @@ public static class SimConnectLibrary
             hWnd: default,
             wmMessageId: default,
             configIndex,
+            retryDelay,
             cancelToken
             );
     }
@@ -61,6 +63,7 @@ public static class SimConnectLibrary
         nint hWnd,
         int messageId = SimConnectMessageId,
         int configIndex = default,
+        TimeSpan retryDelay = default,
         CancellationToken cancelToken = default
         )
     {
@@ -74,6 +77,7 @@ public static class SimConnectLibrary
             hWnd,
             messageId,
             configIndex,
+            retryDelay,
             cancelToken
             );
     }
@@ -84,6 +88,7 @@ public static class SimConnectLibrary
         nint hWnd,
         int wmMessageId = SimConnectMessageId,
         int configIndex = default,
+        TimeSpan retryDelay = default,
         CancellationToken cancelToken = default
         )
     {
@@ -106,6 +111,7 @@ public static class SimConnectLibrary
                 hWnd,
                 wmMessageId,
                 configIndex,
+                retryDelay,
                 cancelToken
                 );
         }
@@ -117,33 +123,34 @@ public static class SimConnectLibrary
         nint hWnd,
         int wmMessageId = SimConnectMessageId,
         int configIndex = default,
+        TimeSpan retryDelay = default,
         CancellationToken cancelToken = default
         )
     {
-        cancelToken.ThrowIfCancellationRequested();
-        await Task.Delay(TimeSpan.FromSeconds(5), cancelToken)
-            .ConfigureAwait(continueOnCapturedContext: false);
-        cancelToken.ThrowIfCancellationRequested();
-        try
+        var simConnectTypeRef = EnsureSimConnectType();
+        if (retryDelay == default)
+            retryDelay = TimeSpan.FromSeconds(5);
+        do
         {
-            return CreateSimConnectCore(
-                name,
-                eventHandle,
-                hWnd,
-                wmMessageId,
-                configIndex
-                );
-        }
-        catch (System.Runtime.InteropServices.COMException) { }
-        return await DelayCreateSimConnectCoreAsync(
-            name,
-            eventHandle,
-            hWnd,
-            wmMessageId,
-            configIndex,
-            cancelToken
-            )
-            .ConfigureAwait(continueOnCapturedContext: false);
+            cancelToken.ThrowIfCancellationRequested();
+            await Task.Delay(retryDelay, cancelToken)
+                .ConfigureAwait(continueOnCapturedContext: false);
+            cancelToken.ThrowIfCancellationRequested();
+            try
+            {
+#pragma warning disable CA1849 // Call async methods when in an async method
+                return CreateSimConnectCore(
+                    simConnectTypeRef,
+                    name,
+                    eventHandle,
+                    hWnd,
+                    wmMessageId,
+                    configIndex
+                    );
+#pragma warning restore CA1849 // Call async methods when in an async method
+            }
+            catch (System.Runtime.InteropServices.COMException) { }
+        } while (true);
     }
 
     public static IDisposable CreateSimConnect(string name, nint hWnd, int messageId = SimConnectMessageId, int configIndex = default)

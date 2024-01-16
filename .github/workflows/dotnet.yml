@@ -18,6 +18,9 @@ jobs:
       - name: Download MSFS SDK Core Installer
         shell: pwsh
         run: "& ./.github/scripts/DownloadMSFS_SDK.ps1 -Verbose"
+      - name: Execute MSFS SDK Core Installer
+        shell: pwsh
+        run: "& ./.github/scripts/ExecuteMSFS_SDKInstaller.ps1 -Verbose"
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:

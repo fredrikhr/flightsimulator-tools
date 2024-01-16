@@ -16,8 +16,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <Import Project="$(MSBuildThisFileDirectory)..\..\MSFS_SDK.Version.props"/>
+
   <PropertyGroup>
-    <Version>$([System.IO.File]::ReadAllText($([System.IO.Path]::Combine('$(MSBuildThisFileDirectory)', '..', '..', 'msfs_sdk.version.txt'))).Trim())</Version>
+    <FileVersion>$(MSFS_SDKFileVersion)</FileVersion>
+    <Version>$(MSFS_SDKVersion)</Version>
   </PropertyGroup>
 
   <ItemGroup>

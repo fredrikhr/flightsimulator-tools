@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project>
+
+  <PropertyGroup>
+    <MSFS_SDKVersion>0.23.1</MSFS_SDKVersion>
+    <MSFS_SDKFileVersion>0.23.1.0</MSFS_SDKFileVersion>
+  </PropertyGroup>
+
+</Project>

@@ -1,1 +1,3 @@
+AddDllDirectory
+RemoveDllDirectory
 HRESULT

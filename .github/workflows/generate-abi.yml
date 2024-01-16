@@ -16,12 +16,15 @@ jobs:
       - name: Download MSFS SDK Core Installer
         shell: pwsh
         run: "& ./.github/scripts/DownloadMSFS_SDK.ps1 -Verbose"
-      - name: Execute MSFS SDK Core Installer
+      - id: install
+        name: Execute MSFS SDK Core Installer
         shell: pwsh
         run: "& ./.github/scripts/ExecuteMSFS_SDKInstaller.ps1 -Verbose"
       - name: Copy MSFS SDK SimConnect header
         shell: pwsh
         run: "& ./.github/scripts/CopySimConnectHeader.ps1"
+        env:
+          MSFS_SDK: ${{ steps.install.outputs.MSFS_SDK }}
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:

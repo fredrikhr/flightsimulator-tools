@@ -5,22 +5,37 @@ name: .NET
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
-  build:
-
+  abi:
     runs-on: windows-latest
+    steps:
+      - name: Checkout ${{ github.repository }}@${{ github.ref }}
+        uses: actions/checkout@v4
+      - name: Download MSFS SDK Core Installer
+        shell: pwsh
+        run: "& ./.github/scripts/DownloadMSFS_SDK.ps1 -Verbose"
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.x
+      - name: Restore tools
+        run: dotnet tool restore
+
+  build:
+    runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 8.0.x
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
+      - name: Checkout ${{ github.repository }}@${{ github.ref }}
+        uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.x
+      - name: Restore dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --no-restore

@@ -32,6 +32,7 @@ jobs:
       - name: Restore tools
         run: dotnet tool restore
       - name: Execute ClangSharp P/Invoke Generator (XML)
+        shell: cmd
         run: dotnet tool run ClangSharpPInvokeGenerator @gen.xml.rsp
         working-directory: ./abi/SimConnect
       - name: Git status

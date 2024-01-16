@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "..root", "..root", "{66A06538-5B66-4139-A11E-6F5256B03A60}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		Directory.Meta.props = Directory.Meta.props
+		LICENSE = LICENSE
+		nuget.config = nuget.config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DC83B0FF-B287-4F26-BEAB-42F343D85F5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FredrikHr.MsFlightSimulatorTools.SimConnectSdk", "src\FredrikHr.MsFlightSimulatorTools.SimConnectSdk\FredrikHr.MsFlightSimulatorTools.SimConnectSdk.csproj", "{F7053FE8-D42D-4FCC-9E93-163B9DCF29C3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F7053FE8-D42D-4FCC-9E93-163B9DCF29C3}.Debug|x64.ActiveCfg = Debug|x64
+		{F7053FE8-D42D-4FCC-9E93-163B9DCF29C3}.Debug|x64.Build.0 = Debug|x64
+		{F7053FE8-D42D-4FCC-9E93-163B9DCF29C3}.Release|x64.ActiveCfg = Release|x64
+		{F7053FE8-D42D-4FCC-9E93-163B9DCF29C3}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E4B6507C-0B39-4CC9-8182-744041BE990E}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F7053FE8-D42D-4FCC-9E93-163B9DCF29C3} = {DC83B0FF-B287-4F26-BEAB-42F343D85F5B}
+	EndGlobalSection
+EndGlobal

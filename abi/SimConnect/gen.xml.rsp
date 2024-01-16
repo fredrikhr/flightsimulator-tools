@@ -1,0 +1,5 @@
+@gen.rsp
+--output-mode
+Xml
+--output
+./xml

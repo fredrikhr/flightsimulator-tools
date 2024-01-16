@@ -1,0 +1,5 @@
+@gen.rsp
+--output-mode
+CSharp
+--output
+./csharp

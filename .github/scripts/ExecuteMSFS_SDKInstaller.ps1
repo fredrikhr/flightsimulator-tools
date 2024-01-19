@@ -1,17 +1,30 @@
 [CmdletBinding()]
-param ()
+param (
+    [Parameter()]
+    [string]$MsiPath = (Resolve-Path ".\msi\MSFS_SDK_Core_Installer.msi")
+)
 
 $MsiExecCmd = Get-Command msiexec -ErrorAction Stop
-$MsiPath = Resolve-Path ".\msi\MSFS_SDK_Core_Installer.msi"
+if (-not (Test-Path -PathType Container "msi")) {
+    [void](New-Item -ItemType Directory "msi" -Verbose:($VerbosePreference -ne [System.Management.Automation.ActionPreference]::SilentlyContinue))
+}
 $MsiLogFile = Join-Path "msi" "MSFS_SDK_Core_Installer.log"
 $MsiExecProcess = Start-Process $MsiExecCmd `
-    "/i", $MsiPath, "/quiet", "/l*", $MsiLogFile `
+    "/i", (Resolve-Path $MsiPath -EA Stop), "/quiet", "/l*", $MsiLogFile `
     -NoNewWindow -Wait `
     -Verbose:($VerbosePreference -ne [System.Management.Automation.ActionPreference]::SilentlyContinue)
 Get-Content ".\msi\MSFS_SDK_Core_Installer.log" | Write-Host
-[ValidateNotNullOrEmpty()][string]$PostInstallMsFsSdkVariable = [System.Environment]::GetEnvironmentVariable(
+
+[ValidateNotNullOrEmpty()][string]$MsfsSdkInstallPath = [System.Environment]::GetEnvironmentVariable(
     "MSFS_SDK",
     [System.EnvironmentVariableTarget]::Machine
 )
-"MSFS_SDK=${PostInstallMsFsSdkVariable}" | Out-File -Append $ENV:GITHUB_OUTPUT
+$GitHubActionsEnvString = "MSFS_SDK=${MsfsSdkInstallPath}"
+if ($ENV:GITHUB_ENV) {
+    $GitHubActionsEnvString | Out-File -Append -LiteralPath $ENV:GITHUB_ENV -Verbose:$IsScriptVerbose
+}
+else {
+    Write-Verbose $GitHubActionsEnvString
+}
+
 exit $MsiExecProcess.ExitCode

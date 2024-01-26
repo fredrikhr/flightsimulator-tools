@@ -21,7 +21,7 @@ jobs:
     needs: init
     strategy:
       matrix: ${{ fromJson(needs.init.outputs.msfs-sdk-matrix) }}
-    uses: ./.github/workflows/msfs_sdk_generate-abi.yml
+    uses: ./.github/workflows/msfs-sdk-generate-abi.yml
     name: "MSFS SDK v${{ matrix.version }}"
     with:
       version: ${{ matrix.version }}

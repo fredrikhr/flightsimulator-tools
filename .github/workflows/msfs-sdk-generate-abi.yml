@@ -14,12 +14,12 @@ on:
 jobs:
   simconnect:
     runs-on: windows-latest
-    name: Generate SimConnect ABI from MSFS_SDK
+    name: Generate SimConnect ABI
     steps:
       - name: Checkout ${{ github.repository }}@${{ github.ref }}
         uses: actions/checkout@v4
       - name: Git configure comitter identity
-        uses: thnetii/.github/actions/git-user-config@main
+        uses: thnetii/github-actions/run/git-user-config@main
       - id: checkout-pr-branch
         name: Swich to new PR branch
         uses: thnetii/github-actions/run/create-rebase-pr-branch@main

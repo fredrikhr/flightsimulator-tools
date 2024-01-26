@@ -18,38 +18,12 @@ jobs:
 
   generate:
     needs: init
-    runs-on: windows-latest
     strategy:
       matrix: ${{ fromJson(needs.init.outputs.msfs-sdk-matrix) }}
+    uses: ./.github/workflows/msfs_sdk_generate-abi.yml
     name: "MSFS SDK v${{ matrix.version }}"
-    steps:
-      - name: Checkout ${{ github.repository }}@${{ github.ref }}
-        uses: actions/checkout@v4
-      - name: Git configure comitter identity
-        uses: thnetii/.github/actions/git-user-config@main
-      - id: checkout-pr-branch
-        name: Swich to new PR branch
-        uses: thnetii/.github/actions/create-rebase-pr-branch@main
-        with:
-          branch-name: msfs_sdk/v${{ matrix.version }}
-
-      - id: download-msfs-sdk
-        name: Download MSFS SDK
-        shell: pwsh
-        run: >
-          & .\.github\scripts\DownloadMSFS_SDK.ps1 -Verbose
-          -Version $ENV:MSFS_SDK_VERSION
-          -LongVersion $ENV:MSFS_SDK_LONGVERSION
-          -DownloadUrl $ENV:MSFS_SDK_INSTALLER_URL
-        env:
-          MSFS_SDK_VERSION: ${{ matrix.version }}
-          MSFS_SDK_LONGVERSION: ${{ matrix.long-version }}
-          MSFS_SDK_INSTALLER_URL: ${{ matrix.msi-url }}
-      - id: install-msfs-sdk
-        name: Install MSFS SDK
-        shell: pwsh
-        run: >
-          & .\.github\scripts\ExecuteMSFS_SDKInstaller.ps1 -Verbose
-          -MsiPath $ENV:MSFS_SDK_INSTALLER_PATH
-        env:
-          MSFS_SDK_INSTALLER_PATH: ${{ steps.download-msfs-sdk.outputs.msi-installer-path }}
+    with:
+      version: ${{ matrix.version }}
+      long-version: ${{ matrix.long-version }}
+      msi-url: ${{ matrix.msi-url }}
+      create-pr: true

@@ -1,6 +1,10 @@
 on:
   push:
     branches: ["main"]
+    paths:
+      - MSFS_SDK.known-versions.json
+      - .github/workflows/msfs-sdk-main.yml
+      - .github/scripts/*.ps1
   workflow_dispatch: {}
 
 jobs:

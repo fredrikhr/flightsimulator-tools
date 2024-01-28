@@ -54,3 +54,22 @@ jobs:
           arguments: |
             tool
             restore
+
+      - name: Copy SimConnect header file
+        shell: pwsh
+        run: >
+          & .\.github\scripts\CopySimConnectHeader.ps1 -Verbose
+      - name: ClangSharp P/Invoke Generator
+        uses: thnetii/github-actions/run/gh-actions-exec@main
+        with:
+          command: dotnet
+          arguments: |
+            tool
+            run
+            ClangSharpPInvokeGenerator
+            --
+            --output
+            ${{ inputs.version }}/xml
+            @gen.xml.rsp
+          working-directory: abi/SimConnect
+          ignore-exitcode: "true"
